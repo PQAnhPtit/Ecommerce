@@ -37,5 +37,4 @@ def shipment_details_update(uname):
     headers = {'Content-Type': 'application/json'}
     response = requests.post(url, data=data, headers=headers)
     api_resp = json.loads(response.content.decode('utf-8'))
-
     return api_resp
