@@ -7,11 +7,10 @@ from shipment_status.models import shipment as ship_obj
 
 
 ### This function is inserting the data into our table.
-def ship_data_insert(fname, lname, email, mobile, address, product_id,
-                     quantity, payment_status, transaction_id, shipment_status):
+def ship_data_insert(fname, lname, email, mobile, address, order_id, payment_status, transaction_id, shipment_status):
     shipment_data = ship_obj(fname=fname, lname=lname, email=email,
                              mobile=mobile,
-                             address=address, product_id=product_id, quantity=quantity,
+                             address=address, order_id=order_id,
                              payment_status=payment_status, transaction_id=transaction_id,
                              shipment_status=shipment_status)
     shipment_data.save()
@@ -27,16 +26,15 @@ def shipment_reg_update(request):
             email = val1.get("Email Id")
             mobile = val1.get("Mobile Number")
             address = val1.get("Address")
-            product_id = val1.get("Product Id")
-            quantity = val1.get("Quantity")
+            order_id = val1.get("Order Id")
             payment_status = val1.get("Payment Status")
             transaction_id = val1.get("Transaction Id")
             shipment_status = "ready to dispatch"
             resp = {}
             respdata = ship_data_insert(fname, lname, email, mobile,
-                                        address, product_id, quantity, payment_status, transaction_id, shipment_status)
+                                        address, order_id, payment_status, transaction_id, shipment_status)
 
-            print("dvdvvdvdvdsvsdvsv"+ respdata)
+            print("dvdvvdvdvdsvsdvsv-----------------------"+ respdata)
 
             ### If it returns value then will show success.
             if respdata:

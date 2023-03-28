@@ -4,6 +4,8 @@ from payment.models import payment_status as paystat
 import requests
 import json
 
+from requests import Response
+
 
 def shipment_details_update(uname):
     ship_dict = {}
@@ -12,8 +14,7 @@ def shipment_details_update(uname):
     user = paystat.objects.filter(username=uname)
     for data in user.values():
         data
-    ship_dict['Product Id'] = data['product_id']
-    ship_dict['Quantity'] = data['quantity']
+    ship_dict['Order Id'] = data['order_id']
     ship_dict['Payment Status'] = data['status']
     ship_dict['Transaction Id'] = data['id']
     ship_dict['Mobile Number'] = data['mobile']
@@ -36,5 +37,7 @@ def shipment_details_update(uname):
     data = json.dumps(ship_dict)
     headers = {'Content-Type': 'application/json'}
     response = requests.post(url, data=data, headers=headers)
-    api_resp = json.loads(response.content.decode('utf-8'))
-    return api_resp
+    #api_resp = json.loads(response.content.decode('utf-8'))
+    #return api_resp
+
+

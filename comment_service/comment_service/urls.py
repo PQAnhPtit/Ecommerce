@@ -19,4 +19,5 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('comment.urls')),
+    path('', include('analyz_comment.urls')),
 ]

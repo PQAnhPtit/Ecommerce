@@ -17,8 +17,8 @@ def add_cart_data(request):
         cart = cart_details.objects.create(
             user_id=data['user_id'],
             product_id=data['product_id'],
-            created_date=data['created_date'],
-            total_price=data['total_price']
+            amount=data['amount'],
+            price=data['price']
         )
 
         resp = {}
@@ -29,8 +29,8 @@ def add_cart_data(request):
                 'id': cart.id,
                 'user_id': cart.user_id,
                 'product_id': cart.product_id,
-                'created_date': cart.created_date,
-                'total_price': cart.total_price
+                'amount': cart.amount,
+                'price': cart.price
             }
         else:
             resp['status'] = 'Failed'

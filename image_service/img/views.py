@@ -17,6 +17,7 @@ def add_img_data(request):
         img = img_details.objects.create(
             link=data['link'],
             description=data['description'],
+            item=data['item']
         )
 
         resp = {}
@@ -26,7 +27,8 @@ def add_img_data(request):
             resp['data'] = {
                 'id': img.id,
                 'link': img.link,
-                'description': img.description
+                'description': img.description,
+                'item': img.item
             }
         else:
             resp['status'] = 'Failed'
