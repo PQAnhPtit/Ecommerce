@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import json
 from django.views.decorators.csrf import csrf_exempt
-from product_model.models import product_details
+#from product_model.models import product_details
 from django.http import JsonResponse
 import json
 import requests
@@ -21,24 +21,16 @@ def get_book(request):
 
 @csrf_exempt
 def get_clothe(request):
-    url = 'http://127.0.0.1:9002/getclothe/'
+    url = 'http://127.0.0.1:9002/getcloth/'
     headers = {'Content-Type': 'application/json'}
     response = requests.get(url, headers=headers)
     val1 = json.loads(response.content.decode('utf-8'))
     return HttpResponse(json.dumps(val1), content_type='application/json')
 
-
-@csrf_exempt
-def get_shoe(request):
-    url = 'http://127.0.0.1:9003/getshoe/'
-    headers = {'Content-Type': 'application/json'}
-    response = requests.get(url, headers=headers)
-    val1 = json.loads(response.content.decode('utf-8'))
-    return HttpResponse(json.dumps(val1), content_type='application/json')
 
 @csrf_exempt
 def get_electronic(request):
-    url = 'http://127.0.0.1:9004/getelectronic/'
+    url = 'http://127.0.0.1:9003/getelectronic/'
     headers = {'Content-Type': 'application/json'}
     response = requests.get(url, headers=headers)
     val1 = json.loads(response.content.decode('utf-8'))
