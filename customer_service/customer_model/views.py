@@ -26,10 +26,10 @@ def get_user_data(request):
 
 ### This function is inserting the data into our table.
 def data_insert(fname, lname, email, mobile, password, address):
-    user_data = user_registration(fname=fname, lname=lname, email=email, mobile=mobile, password=password, address=address)
+    user_data = user_registration(fname=fname, lname=lname, email=email, mobile=mobile,
+                                  password=password, address=address)
     user_data.save()
     return 1
-
 
 ### This function will get the data from the front end.
 @csrf_exempt
